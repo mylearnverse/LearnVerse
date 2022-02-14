@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import {
   ChatSidebar,
@@ -164,6 +164,7 @@ export function ChatSidebarContainer({ scene, canSpawnMessages, presences, occup
   const { messageGroups, sendMessage, setMessagesRead } = useContext(ChatContext);
   const [onScrollList, listRef, scrolledToBottom] = useMaintainScrollPosition(messageGroups);
   const [message, setMessage] = useState("");
+  const typingTimeoutRef = useRef();
   const intl = useIntl();
 
   const onKeyDown = useCallback(
@@ -175,8 +176,11 @@ export function ChatSidebarContainer({ scene, canSpawnMessages, presences, occup
           setMessage("");
         }
       }
+      clearTimeout(typingTimeoutRef.current);
+      typingTimeoutRef.current = setTimeout(() => scene.emit("action_typing_ended"), 2000);
+      scene.emit("action_typing_started");
     },
-    [sendMessage, setMessage]
+    [scene, sendMessage, setMessage]
   );
 
   const onSendMessage = useCallback(
