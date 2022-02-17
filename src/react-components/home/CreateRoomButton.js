@@ -9,8 +9,6 @@ export function CreateRoomButton() {
 
   return (
     <Button
-      thick={breakpoint === "sm" || breakpoint === "md"}
-      xl={breakpoint !== "sm" && breakpoint !== "md"}
       preset="landing"
       onClick={e => {
         e.preventDefault();

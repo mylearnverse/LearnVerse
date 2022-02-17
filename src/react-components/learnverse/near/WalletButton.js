@@ -5,7 +5,7 @@ import { Button } from "../../input/Button";
 
 export function WalletButton({ mobile }) {
   return (
-    <Button thick preset="signin" as="a" href="/wallet">
+    <Button thick preset="signin" as="a" href="https://learnverse.space/#/wallet">
       <FormattedMessage id="sign-in-button" defaultMessage="Connect Wallet" />
     </Button>
   );

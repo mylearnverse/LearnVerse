@@ -39,6 +39,7 @@ export function Footer({
         </div>
         <nav>
           <ul>
+            <li><a href="https://learnverse.space" className={styles.poweredBy}>2022 LearnVerse</a></li>
             {showDiscordBotLink && (
               <li>
                 <img className={styles.discordLogo} src={discordLogoUrl} />

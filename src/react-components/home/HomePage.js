@@ -57,6 +57,20 @@ export function HomePage() {
   return (
     <PageContainer className={styles.homePage}>
       <Container>
+        <Column center grow>
+            <h2 className={styles.roomsHeading}>Students:</h2>
+            <p>Enter the room code provided by your teacher/tutor.</p>
+          <Button preset="landing" as="a" href="/link">
+            <FormattedMessage id="home-page.have-code" defaultMessage="Enter Room Code" />
+          </Button>
+            </Column>
+         <Column center grow>
+            <h2 className={styles.roomsHeading}>Educators:</h2>
+            <p>Create a room to share with your students.</p>
+            {canCreateRooms && <CreateRoomButton />}
+        </Column>
+      </Container>
+      <Container>
         <div className={styles.hero}>
           {auth.isSignedIn ? (
             <div className={styles.signInContainer}>
@@ -74,30 +88,33 @@ export function HomePage() {
           ) : (
             <SignInButton mobile />
           )}
-          <div className={styles.logoContainer}>
-            {isHmc ? (
-              <HmcLogo className="hmc-logo" />
-            ) : (
-              <img alt={configs.translation("app-name")} src={getAppLogo()} />
-            )}
-          </div>
-          <div className={styles.appInfo}>
-            <div className={styles.appDescription}>{configs.translation("app-description")}</div>
-            {canCreateRooms && <CreateRoomButton />}
-            <PWAButton />
-          </div>
-          <div className={styles.heroImageContainer}>
-            <img
-              alt={intl.formatMessage(
-                {
-                  id: "home-page.hero-image-alt",
-                  defaultMessage: "Screenshot of {appName}"
-                },
-                { appName: configs.translation("app-name") }
-              )}
-              src={configs.image("home_background")}
-            />
-          </div>
+            <div className="hidden">
+              <div className={styles.logoContainer}>
+                {isHmc ? (
+                  <HmcLogo className="hmc-logo" />
+                ) : (
+                  <img alt={configs.translation("app-name")} src={getAppLogo()} />
+                )}
+              </div>
+
+              <div className={styles.appInfo}>
+                <div className={styles.appDescription}>{configs.translation("app-description")}</div>
+                {canCreateRooms && <CreateRoomButton />}
+                <PWAButton />
+              </div>
+              <div className={styles.heroImageContainer}>
+                <img
+                  alt={intl.formatMessage(
+                    {
+                      id: "home-page.hero-image-alt",
+                      defaultMessage: "Screenshot of {appName}"
+                    },
+                    { appName: configs.translation("app-name") }
+                  )}
+                  src={configs.image("home_background")}
+                />
+              </div>
+            </div>
         </div>
       </Container>
       {configs.feature("show_feature_panels") && (
@@ -143,9 +160,9 @@ export function HomePage() {
       )}
       {sortedPublicRooms.length > 0 && (
         <Container className={styles.roomsContainer}>
-          <h3 className={styles.roomsHeading}>
-            <FormattedMessage id="home-page.public--rooms" defaultMessage="Public Rooms" />
-          </h3>
+          <h4 className={styles.roomsHeading}>
+            <FormattedMessage id="home-page.public--rooms" defaultMessage="Try a demo room:" />
+          </h4>
           <Column grow padding className={styles.rooms}>
             <MediaGrid center>
               {sortedPublicRooms.map(room => {
@@ -165,9 +182,9 @@ export function HomePage() {
       )}
       {sortedFavoriteRooms.length > 0 && (
         <Container className={styles.roomsContainer}>
-          <h3 className={styles.roomsHeading}>
+          <h4 className={styles.roomsHeading}>
             <FormattedMessage id="home-page.favorite-rooms" defaultMessage="Favorite Rooms" />
-          </h3>
+          </h4>
           <Column grow padding className={styles.rooms}>
             <MediaGrid center>
               {sortedFavoriteRooms.map(room => {
@@ -185,13 +202,6 @@ export function HomePage() {
           </Column>
         </Container>
       )}
-      <Container>
-        <Column center grow>
-          <Button thin preset="landing" as="a" href="/link">
-            <FormattedMessage id="home-page.have-code" defaultMessage="Have a room code?" />
-          </Button>
-        </Column>
-      </Container>
       {isHmc ? (
         <Column center>
           <SocialBar />

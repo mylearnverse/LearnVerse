@@ -9,6 +9,8 @@ import { Container } from "./Container";
 import { SocialBar } from "../home/SocialBar";
 import { SignInButton } from "../home/SignInButton";
 import { WalletButton } from "../learnverse/near/WalletButton";
+import {CreateRoomButton} from "../home/CreateRoomButton";
+import configs from "../../utils/configs";
 
 export function Header({
   appName,
@@ -27,13 +29,14 @@ export function Header({
   onSignOut,
   isHmc
 }) {
+  const canCreateRooms = !configs.feature("disable_room_creation") || auth.isAdmin;
   return (
     <header>
       <Container as="div" className={styles.container}>
         <nav>
           <ul>
             <li>
-              <a href="/" className={styles.homeLink}>
+              <a href="https://learnverse.space" className={styles.homeLink}>
                 <img alt={appName} src={appLogo} />
               </a>
             </li>
@@ -86,9 +89,10 @@ export function Header({
           </ul>
         </nav>
         <div className={styles.signIn}>
+          <WalletButton />
           {isSignedIn ? (
             <div>
-              <span>
+              <span class="hidden">
                 <FormattedMessage
                   id="header.signed-in-as"
                   defaultMessage="Signed in as {email}"
@@ -102,7 +106,7 @@ export function Header({
           ) : (
             <SignInButton />
           )}
-          <WalletButton />
+
         </div>
         {isHmc ? <SocialBar mobile /> : null}
       </Container>

@@ -83,7 +83,7 @@
   color: theme.$text5-color;
   background-color: theme.$accept-color;
   border: 2px solid theme.$accept-border-color;
-  
+
   svg {
     *[stroke=\#000] {
       stroke: theme.$text5-color;
@@ -322,35 +322,52 @@
 }
 
 :local(.thin) {
-  min-height: 41px;
-  height: 41px;
+  min-height: 30px;
+  height: 30px;
+
   &:hover {
     color: theme.$text5-color-hover;
   }
 }
 
 :local(.thick) {
-  height: 53px;
+  height: 30px;
 }
 
 :local(.signin) {
-  border: 2px solid #007AB8;
+  border: 2px solid #337ab7;
   background-color: transparent;
-  color: #007AB8;
+  color: #337ab7;
   box-sizing: border-box;
-  border-radius: 13px;
+  border-radius: 9px;
+
+  &:hover {
+    background-color: #337ab7;
+    color: #fff;
+  }
+
+  &:active {
+    background-color: #337ab7;
+    color: #fff;
+  }
 }
 
 :local(.landing) {
-  border: 2px solid #007AB8;
-  background-color: #007AB8; 
+  border: 2px solid #337ab7;
+  background-color: transparent;
   color: theme.$text5-color;
+  font-size: 14px;
   box-sizing: border-box;
-  border-radius: 13px;
+  border-radius: 9px;
+  color: #337ab7;
+
   &:hover {
-    background-color: #008bd1;
+    background-color: #337ab7;
+    color: #fff;
   }
+
   &:active {
-    background-color: #00699E;
+    background-color: #337ab7;
+    color: #fff;
   }
 }
