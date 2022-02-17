@@ -1,5 +1,6 @@
 # [LearnVerse](https://learnverse.spaces)
-### branch = learnverse
+#### master branch = learnverse-master
+#### dev branch = learnverse-dev
 A [Mozilla Hubs](https://hubs.mozilla.com/) fork for online tutoring, integrated with [NEAR](https://near.org/) blockchain for in-app currencies and NFTs.
 
 
