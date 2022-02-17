@@ -1144,7 +1144,7 @@ class UIRoot extends Component {
           },
           {
             id: "favorite-rooms",
-            label: <FormattedMessage id="more-menu.favorite-rooms" defaultMessage="Favorite Rooms" />,
+            label: <FormattedMessage id="more-menu.favorite-rooms" defaultMessage="Saved Rooms" />,
             icon: FavoritesIcon,
             onClick: () =>
               this.props.performConditionalSignIn(

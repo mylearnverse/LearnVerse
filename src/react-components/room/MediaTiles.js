@@ -73,9 +73,8 @@ function BaseTile({ as: TileComponent, className, name, description, tall, wide,
       className={classNames(styles.mediaTile, { [styles.tall]: tall, [styles.wide]: wide }, className)}
       {...additionalProps}
       {...rest}
-    ><div className={styles.info}>
-          <b>{name}</b>
-    </div>
+    >
+        <p class="room-name">{name}</p>
       <div className={styles.thumbnailContainer}>{children}</div>
       {(name || description) && (
         <div className={styles.info}>

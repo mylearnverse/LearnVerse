@@ -1,5 +1,38 @@
 @use "../styles/theme.scss";
 
+
+body.dark-theme {
+    background: url(https://static.learncube.net/images/gradient.svg) no-repeat fixed,url(https://static.learncube.net/images/sky-left.png) 0 0 no-repeat fixed,url(https://static.learncube.net/images/sky-right.png) 0 0 no-repeat fixed,#b4cdd9;
+    background-size: 150% 150%,500px 900px,370px 907px;
+    background-position: top,0 0,100% 0;
+}
+.panel {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin: auto;
+}
+
+div.panel a, div.panel button {
+  display: inline-flex;
+  margin-top: 15px;
+}
+
+.panel p {
+  margin-top: -8px;
+}
+
+.room-name {
+  background: #333;
+  border-radius: 10px 10px 0 0;
+  color: #fff;
+  margin-bottom: -20px;
+  z-index: 2;
+  height: 30px;
+  line-height: 27px;
+}
+
 :local(.home-page) {
   flex: 1;
   background-size: cover;

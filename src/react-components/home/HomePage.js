@@ -57,17 +57,21 @@ export function HomePage() {
   return (
     <PageContainer className={styles.homePage}>
       <Container>
-        <Column center grow>
+        <Column center grow >
+            <div className="panel">
             <h2 className={styles.roomsHeading}>Students:</h2>
             <p>Enter the room code provided by your teacher/tutor.</p>
           <Button preset="landing" as="a" href="/link">
             <FormattedMessage id="home-page.have-code" defaultMessage="Enter Room Code" />
           </Button>
+                </div>
             </Column>
          <Column center grow>
+             <div className="panel">
             <h2 className={styles.roomsHeading}>Educators:</h2>
             <p>Create a room to share with your students.</p>
             {canCreateRooms && <CreateRoomButton />}
+             </div>
         </Column>
       </Container>
       <Container>
@@ -160,30 +164,32 @@ export function HomePage() {
       )}
       {sortedPublicRooms.length > 0 && (
         <Container className={styles.roomsContainer}>
-          <h4 className={styles.roomsHeading}>
+          <Column grow padding>
+            <div class="panel">
+            <h4 className={styles.roomsHeading}>
             <FormattedMessage id="home-page.public--rooms" defaultMessage="Try a demo room:" />
-          </h4>
-          <Column grow padding className={styles.rooms}>
+            </h4>
             <MediaGrid center>
-              {sortedPublicRooms.map(room => {
+                {sortedPublicRooms.map(room => {
                 return (
-                  <MediaTile
+                <MediaTile
                     key={room.id}
                     entry={room}
                     processThumbnailUrl={(entry, width, height) =>
-                      scaledThumbnailUrlFor(entry.images.preview.url, width, height)
-                    }
-                  />
-                );
-              })}
+                        scaledThumbnailUrlFor(entry.images.preview.url, width, height)
+                        }
+                        />
+                    );
+                })}
             </MediaGrid>
+            </div>
           </Column>
         </Container>
       )}
       {sortedFavoriteRooms.length > 0 && (
         <Container className={styles.roomsContainer}>
           <h4 className={styles.roomsHeading}>
-            <FormattedMessage id="home-page.favorite-rooms" defaultMessage="Favorite Rooms" />
+            <FormattedMessage id="home-page.favorite-rooms" defaultMessage="Saved Rooms" />
           </h4>
           <Column grow padding className={styles.rooms}>
             <MediaGrid center>

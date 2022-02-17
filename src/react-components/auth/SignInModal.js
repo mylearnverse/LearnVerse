@@ -69,7 +69,7 @@ export const SignInMessages = defineMessages({
   },
   favoriteRooms: {
     id: "sign-in-modal.signin-message.favorite-rooms",
-    defaultMessage: "You'll need to sign in to add favorite rooms."
+    defaultMessage: "You'll need to sign in to view saved rooms."
   },
   tweet: {
     id: "sign-in-modal.signin-message.tweet",
