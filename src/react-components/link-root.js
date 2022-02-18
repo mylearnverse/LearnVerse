@@ -169,7 +169,7 @@ class LinkRoot extends Component {
       <WrappedIntlProvider>
         <div className={styles.link}>
           <div className={styles.linkContents}>
-            <a className={styles.logo} href="/">
+            <a className={styles.logo} href="https://learnverse.space/">
               <img
                 src={configs.image("logo")}
                 alt={<FormattedMessage id="link-page.logo-alt" defaultMessage="Logo" />}
@@ -194,7 +194,7 @@ class LinkRoot extends Component {
                     values={{ linebreak: <br /> }}
                   />
                 ) : (
-                  <FormattedMessage id="link-page.enter-code" defaultMessage="Enter code:" />
+                  <FormattedMessage id="link-page.enter-code" defaultMessage="Enter room code:" />
                 )}
               </div>
 
@@ -284,10 +284,12 @@ class LinkRoot extends Component {
                 </div>
               )}
             </div>
+            <div className="hidden">
             <div className={styles.createLink}>
               <a href="/">
                 <FormattedMessage id="link-page.create-room-button" defaultMessage="Create a new room" />
               </a>
+            </div>
             </div>
           </div>
         </div>

@@ -21,6 +21,7 @@ import {SocialBar} from "../home/SocialBar";
 import {SignInButton} from "./SignInButton";
 import maskEmail from "../../utils/mask-email";
 import {ReactComponent as HmcLogo} from "../icons/HmcLogo.svg";
+import { Buffer } from "buffer"; global.Buffer = Buffer;
 
 export function HomePage() {
     const auth = useContext(AuthContext);

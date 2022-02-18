@@ -10,7 +10,6 @@ import "./react-components/styles/global.scss";
 import { ThemeProvider } from "./react-components/styles/theme";
 
 registerTelemetry("/home", "Hubs Home Page");
-
 const store = new Store();
 window.APP = { store };
 

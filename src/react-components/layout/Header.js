@@ -92,7 +92,7 @@ export function Header({
           <WalletButton />
           {isSignedIn ? (
             <div>
-              <span class="hidden">
+              <span className="hidden">
                 <FormattedMessage
                   id="header.signed-in-as"
                   defaultMessage="Signed in as {email}"
