@@ -8,7 +8,7 @@ import styles from "../../home/SignInButton.scss";
 const {connect, keyStores, WalletConnection} = nearAPI;
 let wallet = null;
 let near = null;
-let walletConnected = true;
+let walletConnected = false;
 let nearAccount = "Wallet Connected";
 
 async function connectNear() {

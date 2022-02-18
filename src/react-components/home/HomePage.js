@@ -197,6 +197,7 @@ export function HomePage() {
             <div className="divider"></div>
             {sortedPublicRooms.length > 0 && (
                 <Container className={styles.roomsContainer}>
+                    <p><br/></p>
                     <h4 className={styles.roomsHeading}>
                         <FormattedMessage id="home-page.demo-rooms" defaultMessage="Try a demo room"/>
                     </h4>

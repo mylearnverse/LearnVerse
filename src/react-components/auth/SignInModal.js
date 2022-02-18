@@ -115,7 +115,7 @@ export function SubmitEmail({ onSubmitEmail, initialEmail, privacyUrl, termsUrl,
         placeholder="example@example.com"
       />
       <p>
-        <small>
+        <small className="hidden">
           <LegalMessage termsUrl={termsUrl} privacyUrl={privacyUrl} />
         </small>
       </p>
