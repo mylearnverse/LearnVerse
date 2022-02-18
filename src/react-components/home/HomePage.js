@@ -21,7 +21,9 @@ import {SocialBar} from "../home/SocialBar";
 import {SignInButton} from "./SignInButton";
 import maskEmail from "../../utils/mask-email";
 import {ReactComponent as HmcLogo} from "../icons/HmcLogo.svg";
-import { Buffer } from "buffer"; global.Buffer = Buffer;
+import {Buffer} from "buffer";
+
+global.Buffer = Buffer;
 
 export function HomePage() {
     const auth = useContext(AuthContext);
@@ -195,23 +197,23 @@ export function HomePage() {
             <div className="divider"></div>
             {sortedPublicRooms.length > 0 && (
                 <Container className={styles.roomsContainer}>
-                    <Column grow padding>
-                        <h2 className="demo">Try a demo room</h2>
-                        <div className="panel">
-                            <MediaGrid center>
-                                {sortedPublicRooms.map(room => {
-                                    return (
-                                        <MediaTile
-                                            key={room.id}
-                                            entry={room}
-                                            processThumbnailUrl={(entry, width, height) =>
-                                                scaledThumbnailUrlFor(entry.images.preview.url, width, height)
-                                            }
-                                        />
-                                    );
-                                })}
-                            </MediaGrid>
-                        </div>
+                    <h4 className={styles.roomsHeading}>
+                        <FormattedMessage id="home-page.demo-rooms" defaultMessage="Try a demo room"/>
+                    </h4>
+                    <Column grow padding className={styles.rooms}>
+                        <MediaGrid center>
+                            {sortedPublicRooms.map(room => {
+                                return (
+                                    <MediaTile
+                                        key={room.id}
+                                        entry={room}
+                                        processThumbnailUrl={(entry, width, height) =>
+                                            scaledThumbnailUrlFor(entry.images.preview.url, width, height)
+                                        }
+                                    />
+                                );
+                            })}
+                        </MediaGrid>
                     </Column>
                 </Container>
             )}
