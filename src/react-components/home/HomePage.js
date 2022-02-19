@@ -60,32 +60,6 @@ export function HomePage() {
     return (
         <PageContainer className={styles.homePage}>
             <Container>
-                <Column center grow>
-                    <div>
-                        <h1>Educators</h1>
-                    </div>
-                </Column>
-            </Container>
-            <Container>
-                <Column center grow>
-                    <div className="panel">
-                        <h2 className={styles.roomsHeading}>Join a room:</h2>
-                        <p>Join an existing room using a unique room code.</p>
-                        <Button preset="landing" as="a" href="/link">
-                            <FormattedMessage id="home-page.have-code" defaultMessage="Enter Room Code"/>
-                        </Button>
-                    </div>
-                </Column>
-                <Column center grow>
-                    <div className="panel">
-                        <h2 className={styles.roomsHeading}>Create a room:</h2>
-                        <p>Create a room to share with your students.</p>
-                        {canCreateRooms && <CreateRoomButton/>}
-                    </div>
-                </Column>
-            </Container>
-            <div className="divider"></div>
-            <Container>
                 <div className={styles.hero}>
                     {auth.isSignedIn ? (
                         <div className={styles.signInContainer}>
@@ -101,7 +75,11 @@ export function HomePage() {
                             </a>
                         </div>
                     ) : (
-                        <SignInButton mobile/>
+                        <div center>
+                            <br/>
+                            <br/>
+                            <SignInButton mobile/>
+                        </div>
                     )}
                     <div className="hidden">
                         <div className={styles.logoContainer}>
@@ -132,6 +110,55 @@ export function HomePage() {
                     </div>
                 </div>
             </Container>
+            <Container>
+                <Column center grow>
+                    <div>
+                        <h1>Educators</h1>
+                    </div>
+                </Column>
+            </Container>
+            <Container className={classNames(styles.features, styles.colLg, styles.centerLg)}>
+                <Column center grow>
+                    <div className="panel">
+                        <h2 className={styles.roomsHeading}>Join a room:</h2>
+                        <p>Join an existing room using a room code.  &nbsp;</p>
+                        <Button preset="landing" as="a" href="/link">
+                            <FormattedMessage id="home-page.have-code" defaultMessage="Enter Room Code"/>
+                        </Button>
+                    </div>
+                </Column>
+                <Column center grow>
+                    <div className="panel">
+                        <h2 className={styles.roomsHeading}>Create a room:</h2>
+                        <p>Create a room to share with your students.</p>
+                        {canCreateRooms && <CreateRoomButton/>}
+                    </div>
+                </Column>
+            </Container>
+            {sortedFavoriteRooms.length > 0 && (
+                <Container className={styles.roomsContainer}>
+                    <h4 className={styles.roomsHeading}>
+                        <FormattedMessage id="home-page.favorite-rooms" defaultMessage="My Saved Rooms"/>
+                    </h4>
+                    <Column grow padding className={styles.rooms}>
+                        <MediaGrid center>
+                            {sortedFavoriteRooms.map(room => {
+                                return (
+                                    <MediaTile
+                                        key={room.id}
+                                        entry={room}
+                                        processThumbnailUrl={(entry, width, height) =>
+                                            scaledThumbnailUrlFor(entry.images.preview.url, width, height)
+                                        }
+                                    />
+                                );
+                            })}
+                        </MediaGrid>
+                    </Column>
+                </Container>
+
+            )}
+            <div className="divider"></div>
             <Container className={classNames(styles.features, styles.colLg, styles.centerLg)}>
                 <Column padding gap="xl" className={styles.card}>
                     <img src={configs.image("landing_rooms_thumb")}/>
@@ -141,7 +168,7 @@ export function HomePage() {
                     <p>
                         <FormattedMessage
                             id="home-page.rooms-blurb"
-                            defaultMessage="Create and share virtual classrooms instantly, each room as a unique pin code: <b>- no downloads or VR headset necessary.</b>"
+                            defaultMessage="Create and share virtual classrooms instantly, each room as a unique pin code: No downloads or extra hardware required (VR optional)."
                             values={{b: wrapInBold}}
                         />
                     </p>
@@ -167,34 +194,13 @@ export function HomePage() {
                     <p>
                         <FormattedMessage
                             id="home-page.media-blurb"
-                            defaultMessage="Share your existing lesson plans: videos, PDF files, links b0y dragging dropping into your 3d space, add 3D models to enhance the learning experience "
+                            defaultMessage="Share your existing lesson plans: videos, PDF files, links b0y dragging dropping into your 3d space, add 3D models to enhance the learning experience."
                         />
                     </p>
                 </Column>
+                <div className="divider"></div>
             </Container>
-            {sortedFavoriteRooms.length > 0 && (
-                <Container className={styles.roomsContainer}>
-                    <h4 className={styles.roomsHeading}>
-                        <FormattedMessage id="home-page.favorite-rooms" defaultMessage="My Saved Rooms"/>
-                    </h4>
-                    <Column grow padding className={styles.rooms}>
-                        <MediaGrid center>
-                            {sortedFavoriteRooms.map(room => {
-                                return (
-                                    <MediaTile
-                                        key={room.id}
-                                        entry={room}
-                                        processThumbnailUrl={(entry, width, height) =>
-                                            scaledThumbnailUrlFor(entry.images.preview.url, width, height)
-                                        }
-                                    />
-                                );
-                            })}
-                        </MediaGrid>
-                    </Column>
-                </Container>
-            )}
-            <div className="divider"></div>
+
             {sortedPublicRooms.length > 0 && (
                 <Container className={styles.roomsContainer}>
                     <p><br/></p>
@@ -218,6 +224,7 @@ export function HomePage() {
                     </Column>
                 </Container>
             )}
+
             {isHmc ? (
                 <Column center>
                     <SocialBar/>
