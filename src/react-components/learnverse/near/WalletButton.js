@@ -40,6 +40,10 @@ async function connectWallet() {
     );
 }
 
+async function viewWallet() {
+    window.location.href = "https://learnverse.space/#/wallet"
+}
+
 export function WalletButton({mobile}) {
     connectNear()
     return (
@@ -51,7 +55,7 @@ export function WalletButton({mobile}) {
                 </Button>
             )}
             {walletConnected && (
-                <Button className={mobile ? styles.mobileSignIn : styles.SignInButton}>
+                <Button className={mobile ? styles.mobileSignIn : styles.SignInButton} onClick={viewWallet}>
                     {nearAccount}
                 </Button>
             )}

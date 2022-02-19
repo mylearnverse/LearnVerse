@@ -46,6 +46,7 @@ div.panel a, div.panel button {
   align-items: center;
   width: 80%;
   margin: -60px auto 0;
+  z-index: -1;
 
   @media (min-width: theme.$breakpoint-lg) {
     align-items: center;
