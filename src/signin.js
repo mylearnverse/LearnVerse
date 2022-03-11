@@ -11,6 +11,9 @@ import "./react-components/styles/global.scss";
 import "./assets/stylesheets/globals.scss";
 import { Center } from "./react-components/layout/Center";
 import { ThemeProvider } from "./react-components/styles/theme";
+import {Buffer} from "buffer";
+
+global.Buffer = Buffer;
 
 registerTelemetry("/signin", "Hubs Sign In Page");
 

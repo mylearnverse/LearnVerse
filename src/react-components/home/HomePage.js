@@ -182,7 +182,7 @@ export function HomePage() {
                     <p>
                         <FormattedMessage
                             id="home-page.communicate-blurb"
-                            defaultMessage="Easy to use immersive learning environments to take your teach to the next level and accelerate student outcomes."
+                            defaultMessage="Easy to use immersive learning environments to take your teaching to the next level and accelerate student outcomes."
                         />
                     </p>
                 </Column>
@@ -194,7 +194,7 @@ export function HomePage() {
                     <p>
                         <FormattedMessage
                             id="home-page.media-blurb"
-                            defaultMessage="Share your existing lesson plans: videos, PDF files, links b0y dragging dropping into your 3d space, add 3D models to enhance the learning experience."
+                            defaultMessage="Share your existing lesson plans: videos, PDF files, links by dragging dropping into your 3d space, add 3D models to enhance the learning experience."
                         />
                     </p>
                 </Column>

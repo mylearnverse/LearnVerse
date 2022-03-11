@@ -11,6 +11,9 @@ import "./assets/stylesheets/globals.scss";
 import { PageContainer } from "./react-components/layout/PageContainer";
 import { Center } from "./react-components/layout/Center";
 import { ThemeProvider } from "./react-components/styles/theme";
+import {Buffer} from "buffer";
+
+global.Buffer = Buffer;
 
 registerTelemetry("/verify", "Hubs Verify Email Page");
 
